@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> Register </title>
+<style type="text/css">
+    #jointable table{width:600px;}
+    #jointable th{text-align: center; background-color:lightgray;}
+    #jointable td input {border:1px solid seagreen;}
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script type="text/javascript" src="jquery.ui.datepicker-ko.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+ 
+    $("#btn_join").click(function() {
+       
+            var tel1_pattern = /(^01[016789]$)/;
+ 
+            if ($("#id").val() == "") {
+                alert("Please enter your ID!");
+                $("#id").focus();
+            } else if ($("#pwd").val() == "") {
+                alert("Please enter your password!");
+                $("#pwd").focus();
+ 
+            } else if ($("#pwd2").val() == "") {
+                alert("Please check your password!");
+                $("#pwd2").focus();
+ 
+            } else if ($("#pwd").val() != $("#pwd2").val()) {
+                alert("Password is not matched!");
+                $("#pwd").val("");
+                $("#pwd2").val("");
+                $("#pwd1").focus();
+ 
+            } else if ($("#name").val() == "") {
+                alert("Please enter your name!");
+                $("#name").focus();
+ 
+            } else if ($("#tel1").val() == "") {
+                alert("Please enter the first place of your phone number!");
+                $("#tel1").focus();
+ 
+            } else if (!tel1_pattern.test($("#tel1").val())) {
+                alert("Only 010, 011, 016, 017, 018, 019 is available!")
+                $("#tel1").val("")
+                $("#tel1").focus();
+            }
+        
+            else if ($("#tel2").val() == "") {
+                alert("Please enter the second place of your phone number!");
+                $("#tel2").focus();
+ 
+ 	    }
+            else if ($("#tel3").val() == "") {
+                alert("Please enter the third place of your phone number!");
+                $("#tel3").focus();
+ 
+            } else if ($("#addr").val() == "") {
+                alert("Please enter your address!");
+                $("#addr").focus();
+ 
+            } else if ($("#birth").val() == "") {
+                alert("Please enter your birthday!");
+                $("#birth").focus();
+ 
+            } else if ($("#job").val() == "") {
+                alert("Please enter your job!");
+                $("#job").focus();
+ 
+            } else if ($("#man").is(':checked') == false && $("#woman").is(':checked') == false) {
+                alert("Please select male or female!");
+            } else if ($("#email").val() == "") {
+                alert("Please enter your email!");
+                $("#email").focus();
+            } else {
+                alert("Registration is complete!");
+            }
+ 
+ 
+        });
+ 
+        $("#birth").datepicker(); 
+ 
+    });
+   
+</script>
+</head>
+<body>
+<section><header>
+<h2><center> Travel Advisor <center></h2>
+</header></section>
+
+<div class="join-card">
+<form action="http://cspro.sogang.ac.kr/~cse20141497/cgi-bin/register.php" method="get">
+ 
+<h1> Registration Form </h1>
+<table id="jointable">
+    <tr>
+        <th> ID </th>
+        <td><input type="text" name="id" id="id" size="12" maxlength="12" /></td>
+    </tr>
+    <tr>
+        <th> Password </th>
+        <td><input type="password" name="pwd" id="pwd" size="12" maxlength="12" /></td>
+    </tr>
+    <tr>
+        <th> Password check</th>
+        <td><input type="password" name="pwd2" id="pwd2" size="12" maxlength="12" /></td>
+    </tr>
+    <tr>
+        <th> Name </th>
+        <td><input type="text" name="name" id="name" size="12" maxlength="12" /></td>
+    </tr>
+    <tr>
+        <th> Phone number </th>
+        <td>
+        <input type="text" name="tel1" id="tel1" size="3" maxlength="3" />-
+        <input type="text" name="tel2" id="tel2" size="4" maxlength="4" />-
+        <input type="text" name="tel3" id="tel3" size="4" maxlength="4"/>
+        </td>
+    </tr>
+    <tr>
+        <th> Address </th>
+        <td><input type="text" name="addr" id="addr" maxlength="100" /></td>
+    </tr>
+    <tr>
+        <th> Birthday </th>
+        <td>
+       
+        <input type="text" id="birth" size="8" maxlength="8" />
+           
+       
+        </td>
+    </tr>
+    <tr>
+        <th> Job </th>
+        <td>
+            <select id = "job">
+                <option value="">------
+                <option value="student">Student
+                <option value="Worker">Worker
+                <option value="Self-employee">Self-employee
+                <option value="Housewife">Housewife
+            </select>
+       
+        </td>
+    </tr>
+    <tr>
+        <th> Gender </th>
+        <td>
+            <input type="radio" id="man" name="gender" value="M" checked="checked">Male
+            <input type="radio" id="woman" name="gender" value="W">Female
+        </td>
+    </tr>
+    <tr>
+        <th> E-mail </th>
+        <td><input type="text" name="email" id="email" size="50" maxlength="50" /></td>
+    </tr>
+    <tr>
+       
+        <td colspan="2">
+            <input type="submit" id="btn_join" value="Register">
+            <input type="reset" id="btn_cancel" value="Reset">
+        </td>
+    </tr>
+</table> 
+</form>
+</div>
+</body>
+</html>
